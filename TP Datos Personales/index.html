@@ -1,43 +1,258 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <title>TP Datos Personales</title>
+
+  <!-- Fuente bonita de Google (opcional, pero queda lindo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-body: #f5f7fb;
+      --bg-card: #ffffff;
+      --accent: #2a5783;
+      --accent-soft: #b3d9f7;
+      --text-main: #222;
+      --text-muted: #555;
+      --border-radius: 14px;
+      --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.06);
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e1efff 0, #f5f7fb 45%, #f5f7fb 100%);
+      color: var(--text-main);
+    }
+
+    /* Contenedor principal */
+    .page-wrapper {
+      max-width: var(--max-width);
+      margin: 32px auto 40px;
+      padding: 0 16px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-weight: 700;
+      font-size: 2.2rem;
+      letter-spacing: 0.03em;
+      color: var(--accent);
+    }
+
+    header p.sub {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Cada sección / gráfico en una “tarjeta” */
+    .chart-card {
+      background: var(--bg-card);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 22px 24px;
+      margin-bottom: 26px;
+      border: 1px solid rgba(42, 87, 131, 0.06);
+    }
+
+    .chart-card h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .chart-card p {
+      margin: 6px 0 16px;
+      line-height: 1.5;
+      font-size: 0.96rem;
+      color: var(--text-muted);
+    }
+
+    /* Contenedor de los gráficos para que no se peguen al borde */
+    .chart-wrapper {
+      border-radius: 10px;
+      overflow: hidden;
+      background: #f9fbff;
+      border: 1px solid rgba(179, 217, 247, 0.7);
+    }
+
+    object,
+    iframe,
+    .chart-wrapper > div,
+    .chart-wrapper > object,
+    .chart-wrapper > iframe {
+      width: 100%;
+      display: block;
+    }
+
+    /* Ajuste pequeño para el SVG de Flourish y Tableau */
+    .flourish-embed,
+    .tableauPlaceholder {
+      width: 100%;
+    }
+
+    /* Links */
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive: que no quede todo gigante en pantallas chicas */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.7rem;
+      }
+      .chart-card {
+        padding: 16px 14px 20px;
+      }
+      .chart-card h2 {
+        font-size: 1.1rem;
+      }
+      .chart-card p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="page-wrapper">
+    <header>
+      <h1>TP de Datos Personales</h1>
+      <p class="sub">Visualización de datos de mis caminatas nocturnas y del mediodía</p>
+    </header>
 
-  <h1>TP de Datos Personales</h1>
-  
-  <h2>¿Cómo se relacionan mi esfuerzo (frecuencia cardíaca) y las calorías que quemo según la duración y distancia de mis caminatas?</h2>
-  <p>Este gráfico muestra cómo el aumento de mi frecuencia cardíaca promedio se traduce en un mayor gasto calórico.
-  Las burbujas más grandes representan caminatas más largas (en minutos), y el color indica la distancia recorrida (en km).
-  Se observa que las caminatas, con mayor duración e intensidad, son las que implican un mayor consumo de calorías.</p>
-  <object data="./bubblechart.svg" type="image/svg+xml">
-  Tu navegador no soporta SVG.
-  </object>
+    <!-- RAWGraphs -->
+    <section class="chart-card">
+      <h2>¿Cómo se relacionan mi esfuerzo (frecuencia cardíaca) y las calorías que quemo según la duración y distancia de mis caminatas?</h2>
+      <p>
+        Este gráfico muestra cómo el aumento de mi frecuencia cardíaca promedio se traduce en un mayor gasto calórico.
+        Las burbujas más grandes representan caminatas más largas (en minutos), y el color indica la distancia recorrida (en km).
+        Se observa que las caminatas con mayor duración e intensidad son las que implican un mayor consumo de calorías.
+      </p>
+      <div class="chart-wrapper">
+        <object data="./bubblechart.svg" type="image/svg+xml">
+          Tu navegador no soporta SVG.
+        </object>
+      </div>
+    </section>
 
-  <h2>¿Cómo varía la intensidad (Baja, Media, Alta) de mis caminatas según el turno (mediodía y noche)?</h2>
-  <p>Este gráfico Alluvial muestra la relación entre el turno del día y la intensidad de mis caminatas, medida según la frecuencia cardíaca promedio (BPM).
-  Se observa que las caminatas nocturnas tienden a concentrarse en intensidades medias y altas, reflejando un mayor esfuerzo físico, mientras que las caminatas del mediodía se distribuyen de forma más equilibrada, con predominio de intensidades bajas y medias.</p>
-  <div class="flourish-embed flourish-sankey" data-src="visualisation/26590085">
-    <script src="https://public.flourish.studio/resources/embed.js">
-    </script>
-    <noscript>
-      <img src="https://public.flourish.studio/visualisation/26590085/thumbnail" width="100%" alt="sankey visualization" />
-    </noscript>
+    <!-- Flourish -->
+    <section class="chart-card">
+      <h2>¿Cómo varía la intensidad (baja, media, alta) de mis caminatas según el turno (mediodía y noche)?</h2>
+      <p>
+        Este gráfico alluvial muestra la relación entre el turno del día y la intensidad de mis caminatas, medida según la frecuencia cardíaca promedio (BPM).
+        Se observa que las caminatas nocturnas tienden a concentrarse en intensidades medias y altas, reflejando un mayor esfuerzo físico, mientras que las caminatas del mediodía se distribuyen de forma más equilibrada, con predominio de intensidades bajas y medias.
+      </p>
+      <div class="chart-wrapper">
+        <div class="flourish-embed flourish-sankey" data-src="visualisation/26590085">
+          <script src="https://public.flourish.studio/resources/embed.js"></script>
+          <noscript>
+            <img src="https://public.flourish.studio/visualisation/26590085/thumbnail"
+                 width="100%" alt="sankey visualization" />
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- Datawrapper -->
+    <section class="chart-card">
+      <h2>¿Qué duraciones predominan según la intensidad de mis caminatas?</h2>
+      <p>
+        El gráfico muestra la cantidad de caminatas de cada duración (corta, media y larga) según el nivel de intensidad (baja, media o alta).
+        Se observa que las caminatas largas aparecen principalmente en las intensidades altas, mientras que las cortas predominan en intensidades medias y bajas.
+      </p>
+      <div class="chart-wrapper">
+        <iframe title="Distribución de las duraciones según la intensidad de las caminatas"
+                aria-label="Grouped column chart"
+                id="datawrapper-chart-rmQy5"
+                src="https://datawrapper.dwcdn.net/rmQy5/1/"
+                scrolling="no" frameborder="0"
+                style="width: 0; min-width: 100% !important; border: none;"
+                height="476" data-external="1">
+        </iframe>
+      </div>
+      <script type="text/javascript">
+        window.addEventListener("message", function (a) {
+          if (void 0 !== a.data["datawrapper-height"]) {
+            var e = document.querySelectorAll("iframe");
+            for (var t in a.data["datawrapper-height"]) {
+              for (var r, i = 0; r = e[i]; i++) {
+                if (r.contentWindow === a.source) {
+                  var d = a.data["datawrapper-height"][t] + "px";
+                  r.style.height = d;
+                }
+              }
+            }
+          }
+        });
+      </script>
+    </section>
+
+    <!-- Tableau -->
+    <section class="chart-card">
+      <h2>¿En qué horarios y días de la semana quemo más calorías durante mis caminatas?</h2>
+      <p>
+        Este mapa de calor muestra cómo varía el promedio de calorías quemadas según la hora del día y el día de la semana.
+        Se observa que las caminatas realizadas por la noche (entre las 21 y 23 horas) tienden a registrar un mayor gasto calórico en comparación con las del mediodía.
+        Esto se debe a que en los turnos nocturnos las sesiones suelen ser más largas e intensas, mientras que las caminatas del mediodía presentan valores más moderados y constantes durante toda la semana.
+      </p>
+      <div class="chart-wrapper">
+        <div class="tableauPlaceholder" id="viz1765407078665" style="position: relative">
+          <noscript>
+            <a href="#">
+              <img alt="Promedio de calorías quemadas por horario y día de la semana"
+                   src="https://public.tableau.com/static/images/Pr/Promediodecalorasquemadasporhorarioydadelasemana/Hoja2/1_rss.png"
+                   style="border: none" />
+            </a>
+          </noscript>
+          <object class="tableauViz" style="display:none;">
+            <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+            <param name="embed_code_version" value="3" />
+            <param name="site_root" value="" />
+            <param name="name" value="Promediodecalorasquemadasporhorarioydadelasemana/Hoja2" />
+            <param name="tabs" value="no" />
+            <param name="toolbar" value="yes" />
+            <param name="static_image" value="https://public.tableau.com/static/images/Pr/Promediodecalorasquemadasporhorarioydadelasemana/Hoja2/1.png" />
+            <param name="animate_transition" value="yes" />
+            <param name="display_static_image" value="yes" />
+            <param name="display_spinner" value="yes" />
+            <param name="display_overlay" value="yes" />
+            <param name="display_count" value="yes" />
+            <param name="language" value="es-ES" />
+            <param name="filter" value="publish=yes" />
+          </object>
+        </div>
+      </div>
+      <script type="text/javascript">
+        var divElement = document.getElementById('viz1765407078665');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.width = '100%';
+        vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+      </script>
+    </section>
   </div>
-
-  <h2>¿Qué duraciones predominan según la intensidad de mis caminatas?</h2>
-  <p>El gráfico muestra la cantidad de caminatas de cada duración (corta, media y larga) según el nivel de intensidad (baja, media o alta). Se observa que las caminatas largas aparecen principalmente en las intensidades altas, mientras que las cortas predominan en intensidades medias y bajas.</p>
-  <iframe title="Distribución de las duraciones según la intensidad de las caminatas" aria-label="Grouped column chart" id="datawrapper-chart-rmQy5" src="https://datawrapper.dwcdn.net/rmQy5/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="476" data-external="1">
-  </iframe>
-  <script type="text/javascript">window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}});
-  </script>
-  
-  <h2>¿En qué horarios y días de la semana quemo más calorías durante mis caminatas?</h2>
-  <p>Este gráfico de mapa de calor muestra cómo varía el promedio de calorías quemadas según la hora del día y el día de la semana.
-  Se observa que las caminatas realizadas por la noche (entre las 21 y 23 horas) tienden a registrar un mayor gasto calórico en comparación con las del mediodía. Esto se debe a que en los turnos nocturnos las sesiones suelen ser más largas e intensas, mientras que las caminatas del mediodía presentan valores más moderados y constantes durante toda la semana.</p>
-  <div class='tableauPlaceholder' id='viz1765407078665' style='position: relative'><noscript><a href='#'><img alt='Promedio de calorías quemadas por horario y día de la semana ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;Promediodecalorasquemadasporhorarioydadelasemana&#47;Hoja2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Promediodecalorasquemadasporhorarioydadelasemana&#47;Hoja2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;Promediodecalorasquemadasporhorarioydadelasemana&#47;Hoja2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1765407078665');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-
 </body>
 </html>
