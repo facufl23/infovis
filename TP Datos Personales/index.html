@@ -6,16 +6,16 @@
 </head>
 <body>
 
-  <h1>Rawgraphs</h1>
+  <h1>TP de Datos Personales</h1>
+  
   <h2>¿Cómo se relacionan mi esfuerzo (frecuencia cardíaca) y las calorías que quemo según la duración y distancia de mis caminatas?</h2>
   <p>Este gráfico muestra cómo el aumento de mi frecuencia cardíaca promedio se traduce en un mayor gasto calórico.
-  Las burbujas más grandes representan caminatas más largas, y el color indica la distancia recorrida.
+  Las burbujas más grandes representan caminatas más largas (en minutos), y el color indica la distancia recorrida (en km).
   Se observa que las caminatas, con mayor duración e intensidad, son las que implican un mayor consumo de calorías.</p>
   <object data="./bubblechart.svg" type="image/svg+xml">
   Tu navegador no soporta SVG.
   </object>
 
-  <h1>Flourish</h1>
   <h2>¿Cómo varía la intensidad (Baja, Media, Alta) de mis caminatas según el turno (mediodía y noche)?</h2>
   <p>Este gráfico Alluvial muestra la relación entre el turno del día y la intensidad de mis caminatas, medida según la frecuencia cardíaca promedio (BPM).
   Se observa que las caminatas nocturnas tienden a concentrarse en intensidades medias y altas, reflejando un mayor esfuerzo físico, mientras que las caminatas del mediodía se distribuyen de forma más equilibrada, con predominio de intensidades bajas y medias.</p>
@@ -27,13 +27,17 @@
     </noscript>
   </div>
 
-  <h1>Datawrapper</h1>
-  <h2>¿Cuál es el rango de calorías quemadas en mis caminatas del mediodía y de la noche?</h2>
-  <p>Este gráfico muestra el rango de calorías quemadas en mis caminatas según el turno del día.
-  Las líneas representan la variación entre el mínimo y el máximo de gasto calórico.
-  Se observa que el rango nocturno es más alto y más amplio, lo que sugiere mayor esfuerzo físico y variabilidad en la intensidad de las caminatas nocturnas.</p>
-  <iframe title="Rango de calorías quemadas según el turno del día" aria-label="Range Plot" id="datawrapper-chart-u67tK" src="https://datawrapper.dwcdn.net/u67tK/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="121" data-external="1"></iframe>
-  <script type="text/javascript">window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}});</script>
+  <h2>¿Qué duraciones predominan según la intensidad de mis caminatas?</h2>
+  <p>El gráfico muestra la cantidad de caminatas de cada duración (corta, media y larga) según el nivel de intensidad (baja, media o alta). Se observa que las caminatas largas aparecen principalmente en las intensidades altas, mientras que las cortas predominan en intensidades medias y bajas.</p>
+  <iframe title="Distribución de las duraciones según la intensidad de las caminatas" aria-label="Grouped column chart" id="datawrapper-chart-rmQy5" src="https://datawrapper.dwcdn.net/rmQy5/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="476" data-external="1">
+  </iframe>
+  <script type="text/javascript">window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}});
+  </script>
   
+  <h2>¿En qué horarios y días de la semana quemo más calorías durante mis caminatas?</h2>
+  <p>Este gráfico de mapa de calor muestra cómo varía el promedio de calorías quemadas según la hora del día y el día de la semana.
+  Se observa que las caminatas realizadas por la noche (entre las 21 y 23 horas) tienden a registrar un mayor gasto calórico en comparación con las del mediodía. Esto se debe a que en los turnos nocturnos las sesiones suelen ser más largas e intensas, mientras que las caminatas del mediodía presentan valores más moderados y constantes durante toda la semana.</p>
+  <div class='tableauPlaceholder' id='viz1765407078665' style='position: relative'><noscript><a href='#'><img alt='Promedio de calorías quemadas por horario y día de la semana ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;Promediodecalorasquemadasporhorarioydadelasemana&#47;Hoja2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Promediodecalorasquemadasporhorarioydadelasemana&#47;Hoja2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;Promediodecalorasquemadasporhorarioydadelasemana&#47;Hoja2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1765407078665');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
 </body>
 </html>
